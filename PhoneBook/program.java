@@ -1,19 +1,19 @@
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class program {
     public static void main(String[] args) throws IOException {
-        // Contact contact = importContact.getScannerNumber();
+        // Contact contactInput = importContact.getScannerNumber();
 
-        // importContact.writeResult(contact.getContactRows(),
+        // importContact.writeResult(contactInput.getContactRows(),
         // "C:/JavaProjects/PhoneBook/book.txt");
-        // importContact.writeResult(contact.getContactRow(),
+        // importContact.writeResult(contactInput.getContactRow(),
         // "C:/JavaProjects/PhoneBook/book2.txt");
-
-        exportContact.expContact("C:/JavaProjects/PhoneBook/book.txt");
-        System.out.println("-------------------------------------");
-
-        exportContact.expContact("C:/JavaProjects/PhoneBook/book2.txt");
-
+        ArrayList<String> contactArray = new ArrayList<>();
+        contactArray = exportContact.expContactRow("C:/JavaProjects/PhoneBook/book.txt");
+        Contact contactOutput = exportContact.findContact(contactArray, 4);
+        System.out.println(contactOutput.getContactRow());
+        System.out.println(contactOutput.getContactRows());
     }
 
 }

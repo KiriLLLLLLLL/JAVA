@@ -3,7 +3,6 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
-import java.util.jar.Attributes.Name;
 
 public class importContact {
     static void writeResult(String str, String path) throws IOException {
@@ -19,9 +18,9 @@ public class importContact {
         System.out.print("Input id : ");
         Integer id = in.nextInt();
         System.out.print("Input name : ");
-        String fname = in.nextLine();
+        String fname = in.next();
         System.out.print("Input number : ");
-        String number = in.nextLine();
+        String number = in.next();
 
         return new Contact(id, fname, number);
 

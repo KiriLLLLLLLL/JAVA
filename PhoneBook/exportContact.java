@@ -1,37 +1,41 @@
-
-import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class exportContact {
-    // static String[] loadNumbers(String path) throws Exception {
-    // BufferedReader read = new BufferedReader(new FileReader(path));
-    // String str;
-    // String[] str2 = new String[3];
-    // int i = 0;
-    // while ((str = read.readLine()) != null) {
-    // String result = str.replaceAll("\\D+", "");
-    // System.out.println(result);
-    // str2[i] = result;
-    // i++;
-    // }
-    // return str2;
-
-    static void expContact(String path) throws FileNotFoundException {
+    static ArrayList<String> expContactRow(String path) throws FileNotFoundException {
         File file = new File(path);
         Scanner scanner = new Scanner(file);
+        ArrayList<String> arr = new ArrayList<>(3);
         while (scanner.hasNextLine()) {
             String line = scanner.nextLine();
             String[] words = line.split("\\ ");
-            System.out.println(Arrays.toString(words));
+            if (words[0].isBlank() == false) {
+                for (String a : words) {
+                    arr.add(a);
+                }
+            }
         }
 
         scanner.close();
+        return arr;
+    }
+
+    static Contact findContact(ArrayList<String> arr, int id) {
+        Integer idf = 0;
+        String name = "";
+        String number = "";
+        for (int i = 0; i < arr.size(); i++) {
+            if (arr.get(i).length() <= 2 && Integer.parseInt(arr.get(i)) == id) {
+                idf = id;
+                name = arr.get(i + 1);
+                number = arr.get(i + 2);
+            }
+        }
+
+        return new Contact(idf, name, number);
+
     }
 
 }

@@ -11,11 +11,11 @@ public class Contact {
     }
 
     public String getContactRows() {
-        return String.format("%s\n\n%s\n\n%s\n\n", this.id, this.name, this.number);
+        return String.format("%s\n%s\n%s\n\n", this.id, this.name, this.number);
     }
 
     public String getContactRow() {
-        return String.format("%s %s %s", this.id, this.name, this.number);
+        return String.format("%s %s %s\n\n", this.id, this.name, this.number);
     }
 
 }
